@@ -1,0 +1,165 @@
+# Complete Model Configuration for All Available Models
+# Author: Morris Darren Babu
+# Date: 2025-06-25 18:17:03 UTC
+# User: DARREN-2000
+
+models:
+  # Code-specialized models (best for fuzzing)
+  - name: "deepseek-coder:33b"
+    provider: "ollama"
+    size_gb: 18
+    specialty: "code"
+    expected_quality: "very_high"
+    priority: 1
+    
+  - name: "codellama:34b-instruct"
+    provider: "ollama" 
+    size_gb: 19
+    specialty: "code"
+    expected_quality: "very_high"
+    priority: 2
+    
+  - name: "starcoder2:15b"
+    provider: "ollama"
+    size_gb: 9.1
+    specialty: "code"
+    expected_quality: "very_high"
+    priority: 3
+    
+  - name: "qwen2.5-coder:32b"
+    provider: "ollama"
+    size_gb: 19
+    specialty: "code"
+    expected_quality: "very_high"
+    priority: 4
+    
+  - name: "wizardcoder:33b"
+    provider: "ollama"
+    size_gb: 18
+    specialty: "code"
+    expected_quality: "very_high"
+    priority: 5
+    
+  - name: "devstral:latest"
+    provider: "ollama"
+    size_gb: 14
+    specialty: "code"
+    expected_quality: "high"
+    priority: 6
+  
+  # General models with good code capabilities
+  - name: "deepseek-r1:32b"
+    provider: "ollama"
+    size_gb: 19
+    specialty: "general"
+    expected_quality: "high"
+    priority: 7
+    
+  - name: "qwen3:32b"
+    provider: "ollama"
+    size_gb: 20
+    specialty: "general"
+    expected_quality: "high"
+    priority: 8
+    
+  - name: "yi:34b"
+    provider: "ollama"
+    size_gb: 19
+    specialty: "general"
+    expected_quality: "high"
+    priority: 9
+    
+  - name: "gemma3:27b"
+    provider: "ollama"
+    size_gb: 17
+    specialty: "general"
+    expected_quality: "medium"
+    priority: 10
+    
+  - name: "mixtral:latest"
+    provider: "ollama"
+    size_gb: 26
+    specialty: "general"
+    expected_quality: "high"
+    priority: 11
+    
+  - name: "magistral:24b"
+    provider: "ollama"
+    size_gb: 14
+    specialty: "general"
+    expected_quality: "medium"
+    priority: 12
+    
+  - name: "phi4:14b"
+    provider: "ollama"
+    size_gb: 9.1
+    specialty: "general"
+    expected_quality: "medium"
+    priority: 13
+    
+  - name: "llama3:latest"
+    provider: "ollama"
+    size_gb: 4.7
+    specialty: "baseline"
+    expected_quality: "baseline"
+    priority: 14
+
+# Predefined model sets for different experiment phases
+model_sets:
+  validation:  # Quick validation (1 model)
+    - "llama3:latest"
+    
+  quick_test:  # Initial testing (2 models)
+    - "llama3:latest"
+    - "deepseek-coder:33b"
+    
+  code_specialists:  # All code-focused models (6 models)
+    - "deepseek-coder:33b"
+    - "codellama:34b-instruct"
+    - "starcoder2:15b"
+    - "qwen2.5-coder:32b"
+    - "wizardcoder:33b"
+    - "devstral:latest"
+    
+  top_performers:  # Best 4 code models for main experiments
+    - "deepseek-coder:33b"
+    - "codellama:34b-instruct"
+    - "starcoder2:15b"
+    - "qwen2.5-coder:32b"
+    
+  comprehensive:  # All available models (14 models) - for full thesis
+    - "deepseek-coder:33b"
+    - "codellama:34b-instruct"
+    - "starcoder2:15b"
+    - "qwen2.5-coder:32b"
+    - "wizardcoder:33b"
+    - "devstral:latest"
+    - "deepseek-r1:32b"
+    - "qwen3:32b"
+    - "yi:34b"
+    - "gemma3:27b"
+    - "mixtral:latest"
+    - "magistral:24b"
+    - "phi4:14b"
+    - "llama3:latest"
+    
+  large_models:  # Large models for detailed experiments (32B+ models)
+    - "deepseek-coder:33b"
+    - "codellama:34b-instruct"
+    - "qwen2.5-coder:32b"
+    - "wizardcoder:33b"
+    - "deepseek-r1:32b"
+    - "qwen3:32b"
+    - "yi:34b"
+    
+  medium_models:  # Medium-sized models for faster experiments
+    - "starcoder2:15b"
+    - "devstral:latest"
+    - "gemma3:27b"
+    - "magistral:24b"
+    - "phi4:14b"
+    
+  baseline_comparison:  # For comparison studies
+    - "llama3:latest"    # Baseline
+    - "deepseek-coder:33b"  # Best code model
+    - "mixtral:latest"   # Best general model

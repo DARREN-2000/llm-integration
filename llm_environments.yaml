@@ -1,0 +1,99 @@
+# Complete LLM Environment Configurations for All Available Models
+# Author: Morris Darren Babu
+# Date: 2025-06-25 18:17:03 UTC
+# User: DARREN-2000
+
+llm_environments:
+  ollama:
+    base_vars:
+      CIFUZZ_LLM_API_URL: "http://127.0.0.1:11434"  # ✅ Corrected URL
+      CIFUZZ_LLM_API_TOKEN: "dummy_token"
+      CIFUZZ_LLM_PROVIDER: "ollama"
+    
+    # All your available models with optimized settings
+    models:
+      # Code-specialized models (highest priority for experiments)
+      "deepseek-coder:33b":
+        CIFUZZ_LLM_MODEL: "deepseek-coder:33b"
+        CIFUZZ_LLM_MAX_TOKENS: "16384"
+        priority: 1
+        specialty: "code"
+        
+      "codellama:34b-instruct":
+        CIFUZZ_LLM_MODEL: "codellama:34b-instruct"
+        CIFUZZ_LLM_MAX_TOKENS: "16384"
+        priority: 2
+        specialty: "code"
+        
+      "starcoder2:15b":
+        CIFUZZ_LLM_MODEL: "starcoder2:15b"
+        CIFUZZ_LLM_MAX_TOKENS: "8192"
+        priority: 3
+        specialty: "code"
+        
+      "qwen2.5-coder:32b":
+        CIFUZZ_LLM_MODEL: "qwen2.5-coder:32b"
+        CIFUZZ_LLM_MAX_TOKENS: "16384"
+        priority: 4
+        specialty: "code"
+        
+      "wizardcoder:33b":
+        CIFUZZ_LLM_MODEL: "wizardcoder:33b"
+        CIFUZZ_LLM_MAX_TOKENS: "16384"
+        priority: 5
+        specialty: "code"
+        
+      "devstral:latest":
+        CIFUZZ_LLM_MODEL: "devstral:latest"
+        CIFUZZ_LLM_MAX_TOKENS: "16384"
+        priority: 6
+        specialty: "code"
+        
+      # General-purpose models with good code capabilities
+      "deepseek-r1:32b":
+        CIFUZZ_LLM_MODEL: "deepseek-r1:32b"
+        CIFUZZ_LLM_MAX_TOKENS: "16384"
+        priority: 7
+        specialty: "general"
+        
+      "qwen3:32b":
+        CIFUZZ_LLM_MODEL: "qwen3:32b"
+        CIFUZZ_LLM_MAX_TOKENS: "16384"
+        priority: 8
+        specialty: "general"
+        
+      "yi:34b":
+        CIFUZZ_LLM_MODEL: "yi:34b"
+        CIFUZZ_LLM_MAX_TOKENS: "16384"
+        priority: 9
+        specialty: "general"
+        
+      "gemma3:27b":
+        CIFUZZ_LLM_MODEL: "gemma3:27b"
+        CIFUZZ_LLM_MAX_TOKENS: "8192"
+        priority: 10
+        specialty: "general"
+        
+      "mixtral:latest":
+        CIFUZZ_LLM_MODEL: "mixtral:latest"
+        CIFUZZ_LLM_MAX_TOKENS: "32768"  # Mixtral has large context
+        priority: 11
+        specialty: "general"
+        
+      "magistral:24b":
+        CIFUZZ_LLM_MODEL: "magistral:24b"
+        CIFUZZ_LLM_MAX_TOKENS: "8192"
+        priority: 12
+        specialty: "general"
+        
+      "phi4:14b":
+        CIFUZZ_LLM_MODEL: "phi4:14b"
+        CIFUZZ_LLM_MAX_TOKENS: "8192"
+        priority: 13
+        specialty: "general"
+        
+      "llama3:latest":
+        CIFUZZ_LLM_MODEL: "llama3:latest"
+        CIFUZZ_LLM_MAX_TOKENS: "8192"
+        priority: 14
+        specialty: "baseline"  # Use as baseline for comparison

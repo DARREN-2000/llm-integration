@@ -1,0 +1,91 @@
+# Updated Experiment Configuration with All Models
+# Author: Morris Darren Babu
+# Date: 2025-06-25 18:17:03 UTC
+# User: DARREN-2000
+
+experiment:
+  # Timing settings
+  timeout_per_repo_minutes: 10     # Increased for larger models
+  max_generation_attempts: 3
+  pause_between_experiments_seconds: 15  # Longer pause for model switching
+  
+  # Output settings
+  save_generated_code: true
+  save_compilation_logs: true
+  save_raw_outputs: true
+  save_llm_logs: true             # Save LLM interaction logs
+  clean_after_experiment: false
+  
+  # Quality settings
+  validate_generated_code: true
+  attempt_compilation: true       # Enable compilation for better analysis
+  run_basic_tests: false
+  
+  # Model management
+  auto_detect_available_models: true
+  prefer_code_specialized_models: true
+
+  # Experiment phases (organized by model types)
+  phases:
+    - name: "validation"
+      description: "Quick validation with baseline model"
+      categories: ["c_extra_small"]
+      model_set: "validation"
+      max_repos_per_category: 2
+      estimated_duration_minutes: 20
+      
+    - name: "code_specialists_small"
+      description: "Test all code-specialized models on small repos"
+      categories: ["c_extra_small"]
+      model_set: "code_specialists"
+      max_repos_per_category: 3
+      estimated_duration_hours: 2
+      
+    - name: "top_performers_medium"
+      description: "Best 4 code models on medium repositories"
+      categories: ["c_easy_small"]
+      model_set: "top_performers"
+      max_repos_per_category: 3
+      estimated_duration_hours: 3
+      
+    - name: "baseline_comparison"
+      description: "Compare baseline vs best models"
+      categories: ["c_extra_small", "c_easy_small"]
+      model_set: "baseline_comparison"
+      max_repos_per_category: 2
+      estimated_duration_hours: 1.5
+      
+    - name: "large_models_analysis"
+      description: "Analyze performance of 32B+ models"
+      categories: ["c_easy_small", "cpp_easy_small"]
+      model_set: "large_models"
+      max_repos_per_category: 2
+      estimated_duration_hours: 6
+      
+    - name: "comprehensive_thesis"
+      description: "Complete study with all models - for thesis"
+      categories: ["c_extra_small", "c_easy_small", "cpp_easy_small"]
+      model_set: "comprehensive"
+      estimated_duration_hours: 12
+      priority: "thesis_data"
+
+# Storage and archival
+storage:
+  compress_logs: false
+  archive_after_days: 30    # Keep data longer for thesis
+  keep_best_examples: true
+  max_disk_usage_gb: 50     # Increased for all models
+
+# Reporting
+reporting:
+  generate_daily_reports: true
+  generate_phase_reports: true
+  generate_model_comparisons: true
+  generate_thesis_charts: true    # For thesis visualization
+  export_for_thesis: true
+  
+  # Model comparison metrics
+  compare_by_specialization: true
+  compare_by_model_size: true
+  compare_generation_quality: true
+  compare_compilation_success: true
